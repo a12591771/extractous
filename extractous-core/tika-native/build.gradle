@@ -4,7 +4,7 @@ plugins {
 }
 
 
-def tikaVersion = "3.2.3"
+def tikaVersion = "3.2.3" // Force rebuild timestamp
 def numThreads = Runtime.getRuntime().availableProcessors()
 def currentOs = org.gradle.internal.os.OperatingSystem.current()
 
@@ -40,7 +40,11 @@ dependencies {
     implementation "org.apache.tika:tika-parsers-standard:$tikaVersion" // Apache Tika parsers
 
     // Core parser modules (comprehensive coverage for all formats)
-    implementation("org.apache.tika:tika-parser-microsoft-module:$tikaVersion")      // Office (DOCX, XLSX, PPTX, DOC, XLS, PPT)
+    implementation("org.apache.tika:tika-parser-microsoft-module:$tikaVersion") {
+        // CRITICAL FIX: Replace poi-ooxml-lite with poi-ooxml-full to get all XMLBeans schemas
+        exclude group: 'org.apache.poi', module: 'poi-ooxml-lite'
+    }
+    implementation 'org.apache.poi:poi-ooxml-full:5.4.1'  // Complete schema package
     implementation("org.apache.tika:tika-parser-pdf-module:$tikaVersion")             // PDF (fallback)
     implementation("org.apache.tika:tika-parser-html-module:$tikaVersion")            // HTML, XHTML
     implementation("org.apache.tika:tika-parser-apple-module:$tikaVersion")           // iWork (Pages, Numbers, Keynote)
@@ -94,7 +98,7 @@ graalvmNative {
                     // Note: --strict-image-heap is now default in GraalVM 25
                     "-H:+UnlockExperimentalVMOptions",
                     "-H:+RemoveUnusedSymbols",            // Smaller binary
-                    "-H:+ReportExceptionStackTraces"      // Better error messages
+                    "-H:+ReportExceptionStackTraces",     // Better error messages
             )
             jvmArgs.add('-Djava.awt.headless=true')
             requiredVersion = '25' // Upgraded from 23 for latest GraalVM optimizations
