@@ -296,31 +296,27 @@ fn graalvm_install_help_msg() -> String {
 pub fn install_graalvm_ce(install_dir: &PathBuf) -> PathBuf {
     let (base_url, archive_ext, main_dir) = if cfg!(target_os = "windows") {
         let url = if cfg!(target_arch = "x86_64") {
-            "https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-23.0.1/graalvm-community-jdk-23.0.1_windows-x64_bin.zip"
+            "https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_windows-x64_bin.zip"
         } else {
             panic!("Unsupported windows architecture");
         };
-        (url, "zip", "graalvm-community-openjdk-23.0.1+11.1")
+        (url, "zip", "graalvm-community-jdk-25.0.2+9.1")
     } else if cfg!(target_os = "macos") {
-        let (url, dir) = if cfg!(target_arch = "x86_64") {
-            ("https://github.com/bell-sw/LibericaNIK/releases/download/24.1.1+1-23.0.1+13/bellsoft-liberica-vm-full-openjdk23.0.1+13-24.1.1+1-macos-amd64.tar.gz",
-             "bellsoft-liberica-vm-full-openjdk23-24.1.1/Contents/Home")
-        } else if cfg!(target_arch = "aarch64") {
-            ("https://github.com/bell-sw/LibericaNIK/releases/download/24.1.1+1-23.0.1+13/bellsoft-liberica-vm-openjdk23.0.1+13-24.1.1+1-macos-aarch64.tar.gz",
-             "bellsoft-liberica-vm-openjdk23-24.1.1/Contents/Home")
+        let url = if cfg!(target_arch = "aarch64") {
+            "https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_macos-aarch64_bin.tar.gz"
         } else {
-            panic!("Unsupported macos architecture ");
+            panic!("Unsupported macos architecture (macOS x64 support removed in 25.0.2)");
         };
-        (url, "tar.gz", dir)
+        (url, "tar.gz", "graalvm-community-jdk-25.0.2+9.1/Contents/Home")
     } else {
         let url = if cfg!(target_arch = "x86_64") {
-            "https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-23.0.1/graalvm-community-jdk-23.0.1_linux-x64_bin.tar.gz"
+            "https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-x64_bin.tar.gz"
         } else if cfg!(target_arch = "aarch64") {
-            "https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-23.0.1/graalvm-community-jdk-23.0.1_linux-aarch64_bin.tar.gz"
+            "https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-aarch64_bin.tar.gz"
         } else {
             panic!("Unsupported linux architecture");
         };
-        (url, "tar.gz", "graalvm-community-openjdk-23.0.1+11.1")
+        (url, "tar.gz", "graalvm-community-jdk-25.0.2+9.1")
     };
 
     let graalvm_home = install_dir.join(main_dir);
