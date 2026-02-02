@@ -5919,6 +5919,42 @@
             "glob": "org/apache/poi/schemas/ooxml/system/ooxml/themefd26doctype.xsb"
         },
         {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/comments3da0doctype.xsb"
+        },
+        {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctanchorff8atype.xsb"
+        },
+        {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctffdataaa7etype.xsb"
+        },
+        {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctmarkup2d80type.xsb"
+        },
+        {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctobject47c9type.xsb"
+        },
+        {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctomath6725type.xsb"
+        },
+        {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctomathpara8825type.xsb"
+        },
+        {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctruntrackchangea458type.xsb"
+        },
+        {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctsdtblock221etype.xsb"
+        },
+        {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctsdtrun5c60type.xsb"
+        },
+        {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/cttblprex863ftype.xsb"
+        },
+        {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/cttrackchangec317type.xsb"
+        },
+        {
             "glob": "org/apache/tika/mime/custom-mimetypes.xml"
         },
         {

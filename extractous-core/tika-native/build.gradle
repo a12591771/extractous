@@ -21,7 +21,6 @@ if (currentOs.isLinux()) {
 group = 'ai.yobix'
 version = "tika-$tikaVersion-$osName"
 
-
 repositories {
     mavenCentral()
 }
