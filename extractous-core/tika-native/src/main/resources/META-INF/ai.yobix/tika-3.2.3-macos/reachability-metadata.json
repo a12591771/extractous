@@ -5754,6 +5754,9 @@
             "glob": "org/apache/poi/schemas/ooxml/system/ooxml/cttablestyles872ftype.xsb"
         },
         {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/*.xsb"
+        },
+        {
             "glob": "org/apache/poi/schemas/ooxml/system/ooxml/cttblc014type.xsb"
         },
         {
