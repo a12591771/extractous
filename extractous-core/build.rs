@@ -6,6 +6,9 @@ use std::process::Command;
 use walkdir::WalkDir;
 
 fn main() {
+    println!("cargo:rerun-if-changed=build.rs");
+    println!("cargo:rerun-if-changed=tika-native");
+
     // Exit early when building docs or when running clippy
     if env::var("DOCS_RS").is_ok() {
         return;
